@@ -15,17 +15,17 @@ public class Calculator {
         float res;
         switch (sign) {
             case "+":
-                res = operand1+operand2;
+                res = operand1 + operand2;
                 break;
             case "-":
-                res = operand1-operand2;
+                res = operand1 - operand2;
                 break;
             case "*":
-                res = operand1*operand2;
+                res = operand1 * operand2;
                 break;
             case "/":
                 if (operand2 != 0) {
-                    res = (float)operand1/(float)operand2;
+                    res = (float) operand1 / (float) operand2;
                 } else {
                     System.out.println("Ой-ой. На 0 делить нельзя");
                     return;
@@ -36,6 +36,8 @@ public class Calculator {
                 return;
         }
 
-        System.out.println("Получилось: " + res);
+        if (sign.equals("/")) {
+            System.out.println("Получилось: " + res);
+        } else System.out.println("Получилось: " + (int)res);
     }
 }
