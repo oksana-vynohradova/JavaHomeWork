@@ -15,7 +15,7 @@ public class Bingo {
         Random rand = new Random();
         int x = rand.nextInt(101);
         int counter = 0;
-        boolean victory = false;
+        boolean game = true;
         int answ;
 
         System.out.println("Добро пожаловать в Бинго! Попробуйте отгадать мое число от 0 до 100");
@@ -43,7 +43,7 @@ public class Bingo {
             String cmp = "";
 
             if (x == answ) {
-                victory = true;
+                game = false;
                 System.out.println("Ура! Победа! Мое число действительно было: " + x);
                 System.out.println("Количество использованных попыток: " + counter);
                 break;
@@ -69,7 +69,7 @@ public class Bingo {
             }
             System.out.println(hint + "Но мое число " + cmp);
         }
-        while (victory == false);
+        while (game);
 
 
 
