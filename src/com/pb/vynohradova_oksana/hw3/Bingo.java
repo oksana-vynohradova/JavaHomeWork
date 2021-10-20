@@ -40,7 +40,7 @@ public class Bingo {
             }
             answ = Integer.parseInt(answer.trim());
 
-            String cmp = "";
+            String cmp;
 
             if (x == answ) {
                 game = false;
@@ -57,7 +57,7 @@ public class Bingo {
             }
 
             int step = Math.abs(x - answ);
-            String hint = "";
+            String hint;
             if (step >= 50) {
                 hint = "Холодно. ";
             } else if (step >= 25) {
