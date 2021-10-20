@@ -52,7 +52,7 @@ public class Bingo {
                 continue;
             } else if (x < answ) {
                 cmp = "меньше";
-            } else if (x > answ) {
+            } else {
                 cmp = "больше";
             }
 
