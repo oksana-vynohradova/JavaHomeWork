@@ -17,10 +17,12 @@ public class Dog extends Animal{
         kind = "собака";
     }
 
+    @Override
     public void makeNoise() {
         System.out.println(getName() + " говорит Вам: \"Гав-Гав\"");
     }
 
+    @Override
     public void eat(String food) {
         if (isHungry) {
             if (notNullOrEmpty(food) && food.equalsIgnoreCase("косточка")) {
@@ -58,6 +60,7 @@ public class Dog extends Animal{
     @Override
     public String toString() {
         return getClass().getSimpleName() +
+                " extends " + getClass().getSuperclass().getSimpleName() +
                 "{name='" + getName() + '\'' +
                 ", food='" + getFood() + '\'' +
                 ", location='" + getLocation() + '\'' +
