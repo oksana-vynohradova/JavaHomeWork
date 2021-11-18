@@ -51,6 +51,12 @@ public class OnlineShop {
         } while (attempt < MAXTRIES && !enterRes);
     }
 
+    /**
+     * Запрашивает у пользователь логин
+     * @param q объект типа Scanner
+     * @param registration флаг процедуры регистрации да/нет
+     * @return введенные пользователем данные
+     */
     static String askLogin(Scanner q, boolean registration) {
         if (registration) {
             System.out.println("Для регистрации введите логин" + System.lineSeparator() +
@@ -63,6 +69,12 @@ public class OnlineShop {
         return q.next();
     }
 
+    /**
+     * Запрашивает у пользователя пароль
+     * @param q объект типа Scanner
+     * @param registration флаг процедуры регистрации да/нет
+     * @return введенные пользователем данные
+     */
     static String askPassword(Scanner q, boolean registration) {
         if (registration) {
             System.out.println("Придумайте пароль" + System.lineSeparator() +
@@ -74,6 +86,11 @@ public class OnlineShop {
         return q.next();
     }
 
+    /**
+     * Запрашивает у пользователя подтверждение пароля
+     * @param q объект типа Scanner
+     * @return введенные пользователем данные
+     */
     static String askConfirmPassword(Scanner q) {
         System.out.println("Для подтверждения повторите пароль");
         return q.next();
