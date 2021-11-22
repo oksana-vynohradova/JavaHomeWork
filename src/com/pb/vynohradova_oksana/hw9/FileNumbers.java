@@ -1,15 +1,26 @@
 package com.pb.vynohradova_oksana.hw9;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileNumbers {
-    public static void main(String[] args) {
+    private static final Logger LOGGER = Logger.getLogger(FileNumbers.class.getName());
+
+    public static void main(String[] args) throws IOException {
+        LOGGER.setLevel(Level.ALL);
+        Handler handler = new FileHandler("files\\FileNumbers.log",0,1);
+        LOGGER.addHandler(handler);
+
         String str = createNumbersFile();
         System.out.println("Создан файл " + str);
 
@@ -18,6 +29,8 @@ public class FileNumbers {
     }
 
     static String createNumbersFile() {
+        LOGGER.entering(FileNumbers.class.getName(), "createNumbersFile");
+
         StringBuilder sb = new StringBuilder();
         Random rand = new Random();
 
@@ -36,13 +49,17 @@ public class FileNumbers {
         try (Writer writer = new FileWriter(fileName)){
             writer.write(sb.toString());
         } catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
+            LOGGER.log(Level.SEVERE, e.getMessage());
+            System.out.println(e.getMessage());
         }
 
+        LOGGER.exiting(FileNumbers.class.getName(), "createNumbersFile");
        return fileName;
     }
 
     static String createOddNumbersFile(String fileName) {
+        LOGGER.entering(FileNumbers.class.getName(), "createOddNumbersFile");
+
         StringBuilder sb = new StringBuilder();
         Path path = Paths.get(fileName);
 
@@ -65,6 +82,7 @@ public class FileNumbers {
                 }
             }
         } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
             System.out.println(e.getMessage());
         }
 
@@ -73,9 +91,11 @@ public class FileNumbers {
         try (Writer writer = new FileWriter("files\\odd-numbers.txt")){
             writer.write(sb.toString());
         } catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
+            LOGGER.log(Level.SEVERE, e.getMessage());
+            System.out.println(e.getMessage());
         }
 
+        LOGGER.exiting(FileNumbers.class.getName(), "createOddNumbersFile");
         return "files\\odd-numbers.txt";
     }
 }
